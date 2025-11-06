@@ -68,12 +68,15 @@ def predict():
         "model": "GradientBoosting (AI Pattern Learner)"
     })
 
+# ✅ Move this ABOVE the app.run() line
+@app.route("/health")
+def health():
+    return "OK", 200
+
 
 if __name__ == "__main__":
     # Render assigns a dynamic port, so we use the environment variable
     port = int(os.environ.get("PORT", 10000))
     app.run(host="0.0.0.0", port=port)
 
-@app.route("/health")
-def health():
-    return "OK", 200
+
